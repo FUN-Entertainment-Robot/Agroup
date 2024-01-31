@@ -376,5 +376,36 @@ void expressDislike(){
 
   resetPosition(40);
   resetRunningTextColor();
+}
+
+void setup() {
+  M5.begin();
+  pwm.begin();
+  pwm.setPWMFreq(50);
+  pinMode(TOUCH_SENSOR, INPUT);
+  resetRunningTextColor();
+  initializeAngle();
+  resetPosition(1000);
+  delay(1000);
+}
+
+void loop() {
+  M5.update();
+
+  if (M5.BtnA.wasReleased()){
+    dumbbellCurl();
+  }
+
+  if (M5.BtnB.wasReleased()){
+    funnyMove();
+  }
+
+  if (M5.BtnC.wasReleased()){
+    strikePose();
+  }
+
+  if (digitalRead(TOUCH_SENSOR) == HIGH) {
+    expressDislike();
+  }
 
 }
