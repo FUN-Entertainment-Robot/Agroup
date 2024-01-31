@@ -22,7 +22,8 @@ AudioOutputI2S *out;
 AudioFileSourceID3 *id3;
 
 //　サーボドライバの通信経路の指定
-Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(0x40);  // PCA9685のI2Cアドレスを指定
+// PCA9685のI2Cアドレスを指定
+Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(0x40);
 
 //　move関数で扱う角度を示す変数
 int angle;
@@ -198,7 +199,7 @@ void dumbbellCurl(){
     servo_move(servoLongitudinalShoulderRight_PIN, 120);
     servo_move(servoElbowLeft_PIN, 15);
     servo_move(servoLongitudinalShoulderLeft_PIN, 60);
-    // playMP3("/dumbbellCurl.mp3");
+    playMP3("/dumbbellCurl.mp3");
     delay(1000);
 
     for (int count = 30; count > 0; count -= 1){
@@ -293,7 +294,7 @@ void strikePose(){
   servo_move(servoElbowLeft_PIN, 15);
   servo_move(servoLateralShoulderLeft_PIN, 105);
   servo_move(servoLongitudinalShoulderLeft_PIN, 0);
-  // playMP3("/strikePose.mp3");
+  playMP3("/strikePose.mp3");
   delay(1000);
 
   for (int count = 30; count > 0;count -= 1){
@@ -331,7 +332,7 @@ void expressDislike(){
     positionLongitudinalShoulderRight += 1;
     positionNeck += 2;
   }
-    // playMP3("/expressDislike.mp3");
+    playMP3("/expressDislike.mp3");
   
   for (int count = 0; count <= 3; count++){
 
@@ -373,7 +374,6 @@ void expressDislike(){
     positionLongitudinalShoulderRight -= 1;
     positionNeck -= 2;
   }
-
   resetPosition(40);
   resetRunningTextColor();
 }
@@ -407,5 +407,4 @@ void loop() {
   if (digitalRead(TOUCH_SENSOR) == HIGH) {
     expressDislike();
   }
-
 }
