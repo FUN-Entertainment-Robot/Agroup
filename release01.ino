@@ -175,3 +175,206 @@ void playMP3(char *filename){
     if (!mp3->loop()) mp3->stop();
   }
 }
+
+// ダンベルカール
+void dumbbellCurl(){
+  setRunningTextColor("dummbellCurl");
+  initializeAngle();
+  
+  for (int count = 0; count <= 5; count++){
+    for (int count = 0; count < 30; count += 1){
+      servo_move(servoElbowRight_PIN, positionElbowRight);
+      servo_move(servoLongitudinalShoulderRight_PIN, positionLongitudinalShoulderRight);
+      servo_move(servoElbowLeft_PIN, positionElbowLeft);
+      servo_move(servoLongitudinalShoulderLeft_PIN, positionLongitudinalShoulderLeft);
+      delay(40);
+      positionElbowRight += 3;
+      positionLongitudinalShoulderRight += 1;
+      positionElbowLeft -= 3;
+      positionLongitudinalShoulderLeft -= 1;
+    }
+
+    servo_move(servoElbowRight_PIN, 165);
+    servo_move(servoLongitudinalShoulderRight_PIN, 120);
+    servo_move(servoElbowLeft_PIN, 15);
+    servo_move(servoLongitudinalShoulderLeft_PIN, 60);
+    // playMP3("/dumbbellCurl.mp3");
+    delay(1000);
+
+    for (int count = 30; count > 0; count -= 1){
+      servo_move(servoElbowRight_PIN, positionElbowRight);
+      servo_move(servoLongitudinalShoulderRight_PIN, positionLongitudinalShoulderRight);
+      servo_move(servoElbowLeft_PIN, positionElbowLeft);
+      servo_move(servoLongitudinalShoulderLeft_PIN, positionLongitudinalShoulderLeft);
+      delay(40);
+      positionElbowRight -= 3;
+      positionLongitudinalShoulderRight -= 1;
+      positionElbowLeft += 3;
+      positionLongitudinalShoulderLeft += 1;
+    }
+
+    resetPosition(40);
+    delay(40);
+  }
+  resetRunningTextColor();
+}
+
+// 変な動き
+void funnyMove(){
+  setRunningTextColor("funnyMove");
+  initializeAngle();
+
+  servo_move(servoElbowRight_PIN, 165);
+  servo_move(servoLateralShoulderRight_PIN, 75);
+  servo_move(servoLongitudinalShoulderRight_PIN, 180);
+  servo_move(servoElbowLeft_PIN, 15);
+  servo_move(servoLateralShoulderLeft_PIN, 105);
+  servo_move(servoLongitudinalShoulderLeft_PIN, 180);
+  positionElbowRight = 165;
+  positionLateralShoulderRight = 75;
+  positionLongitudinalShoulderRight = 180;
+  positionElbowLeft = 15;
+  positionLateralShoulderLeft = 105;
+  positionLongitudinalShoulderLeft = 180;
+  delay(1000);
+
+  for (int count = 0; count < 3; count += 1){
+    for (int count = 0; count < 30; count += 1){
+      servo_move(servoLongitudinalShoulderRight_PIN, positionLongitudinalShoulderRight);
+      servo_move(servoLongitudinalShoulderLeft_PIN, positionLongitudinalShoulderLeft);
+      delay(60);
+      positionLongitudinalShoulderRight -= 6;
+      positionLongitudinalShoulderLeft -= 6;
+    }
+
+    for (int count = 30; count > 0; count -= 1){
+      servo_move(servoLongitudinalShoulderRight_PIN, positionLongitudinalShoulderRight);
+      servo_move(servoLongitudinalShoulderLeft_PIN, positionLongitudinalShoulderLeft);
+      delay(60);
+      positionLongitudinalShoulderRight += 6;
+      positionLongitudinalShoulderLeft += 6;
+    }
+    positionElbowRight = 165;
+    positionLateralShoulderRight = 75;
+    positionLongitudinalShoulderRight = 180;
+    positionElbowLeft = 15;
+    positionLateralShoulderLeft = 105;
+    positionLongitudinalShoulderLeft = 180;
+    delay(1000);
+  }
+  resetPosition(3000);
+  delay(40);
+  resetRunningTextColor();
+} 
+
+// ダブルバイセップス
+void strikePose(){
+  setRunningTextColor("strikePose");
+  initializeAngle();
+
+  for (int count = 0; count < 30; count += 1){
+    servo_move(servoElbowRight_PIN, positionElbowRight);
+    servo_move(servoLateralShoulderRight_PIN, positionLateralShoulderRight);
+    servo_move(servoLongitudinalShoulderRight_PIN, positionLongitudinalShoulderRight);
+    servo_move(servoElbowLeft_PIN, positionElbowLeft);
+    servo_move(servoLateralShoulderLeft_PIN, positionLateralShoulderLeft);
+    servo_move(servoLongitudinalShoulderLeft_PIN, positionLongitudinalShoulderLeft);
+    delay(40);
+    positionElbowRight += 3;
+    positionLateralShoulderRight -= 3;
+    positionLongitudinalShoulderRight += 3;
+    positionElbowLeft -= 3;
+    positionLateralShoulderLeft += 3;
+    positionLongitudinalShoulderLeft -= 3;
+  }
+  servo_move(servoElbowRight_PIN, 165);
+  servo_move(servoLateralShoulderRight_PIN, 75);
+  servo_move(servoLongitudinalShoulderRight_PIN, 180);
+  servo_move(servoElbowLeft_PIN, 15);
+  servo_move(servoLateralShoulderLeft_PIN, 105);
+  servo_move(servoLongitudinalShoulderLeft_PIN, 0);
+  // playMP3("/strikePose.mp3");
+  delay(1000);
+
+  for (int count = 30; count > 0;count -= 1){
+    servo_move(servoElbowRight_PIN, positionElbowRight);
+    servo_move(servoLateralShoulderRight_PIN, positionLateralShoulderRight);
+    servo_move(servoLongitudinalShoulderRight_PIN, positionLongitudinalShoulderRight);
+    servo_move(servoElbowLeft_PIN, positionElbowLeft);
+    servo_move(servoLateralShoulderLeft_PIN, positionLateralShoulderLeft);
+    servo_move(servoLongitudinalShoulderLeft_PIN, positionLongitudinalShoulderLeft);
+    delay(40);
+    positionElbowRight -= 3;
+    positionLateralShoulderRight += 3;
+    positionLongitudinalShoulderRight -= 3;
+    positionElbowLeft += 3;
+    positionLateralShoulderLeft -= 3;
+    positionLongitudinalShoulderLeft += 3;
+  }
+
+  resetPosition(3000);
+  delay(40);
+  resetRunningTextColor();
+}
+
+// 嫌な動き
+void expressDislike(){
+  setRunningTextColor("expressDislike");
+  initializeAngle();
+  
+  for (int count = 0; count < 20; count += 1){
+    servo_move(servoElbowRight_PIN, positionElbowRight);
+    servo_move(servoLongitudinalShoulderRight_PIN, positionLongitudinalShoulderRight);
+    servo_move(servoNeck_PIN, positionNeck);
+    delay(20);
+    positionElbowRight += 1;
+    positionLongitudinalShoulderRight += 1;
+    positionNeck += 2;
+  }
+    // playMP3("/expressDislike.mp3");
+  
+  for (int count = 0; count <= 3; count++){
+
+    for (int count = 20; count > 0; count -= 1){
+      servo_move(servoElbowRight_PIN, positionElbowRight);
+      servo_move(servoLongitudinalShoulderRight_PIN, positionLongitudinalShoulderRight);
+      servo_move(servoElbowLeft_PIN, positionElbowLeft);
+      servo_move(servoLongitudinalShoulderLeft_PIN, positionLongitudinalShoulderLeft);
+      servo_move(servoNeck_PIN, positionNeck);
+      delay(20);
+      positionElbowRight -= 1;
+      positionLongitudinalShoulderRight -= 1;
+      positionElbowLeft -= 1;
+      positionLongitudinalShoulderLeft -= 1;
+      positionNeck -= 4;
+    }
+
+    for (int count = 20; count > 0; count -= 1){
+      servo_move(servoElbowRight_PIN, positionElbowRight);
+      servo_move(servoLongitudinalShoulderRight_PIN, positionLongitudinalShoulderRight);
+      servo_move(servoElbowLeft_PIN, positionElbowLeft);
+      servo_move(servoLongitudinalShoulderLeft_PIN, positionLongitudinalShoulderLeft);
+      servo_move(servoNeck_PIN, positionNeck);
+      delay(20);
+      positionElbowRight += 1;
+      positionLongitudinalShoulderRight += 1;
+      positionElbowLeft += 1;
+      positionLongitudinalShoulderLeft += 1;
+      positionNeck += 4;
+    }
+  }
+
+  for (int count = 0; count < 20; count += 1){
+    servo_move(servoElbowRight_PIN, positionElbowRight);
+    servo_move(servoLongitudinalShoulderRight_PIN, positionLongitudinalShoulderRight);
+    servo_move(servoNeck_PIN, positionNeck);
+    delay(20);
+    positionElbowRight -= 1;
+    positionLongitudinalShoulderRight -= 1;
+    positionNeck -= 2;
+  }
+
+  resetPosition(40);
+  resetRunningTextColor();
+
+}
