@@ -57,3 +57,64 @@ int positionElbowLeft;
 int positionLateralShoulderLeft;
 int positionLongitudinalShoulderLeft;
 int positionNeck;
+
+void setRunningTextColor(const char* runningFunctionName){
+  
+  if (runningFunctionName == "dummbellCurl"){
+    M5.Lcd.fillScreen(BLACK);
+    M5.Lcd.setTextColor(baseColor);
+    M5.Lcd.setTextSize(2);
+    M5.Lcd.setCursor(130, 200);
+    M5.Lcd.print("Funny");
+    M5.Lcd.setCursor(230, 200);
+    M5.Lcd.print("Strike");
+    M5.Lcd.setCursor(230, 10);
+    M5.Lcd.print("Dislike");
+    M5.Lcd.setTextColor(runningColor);
+    M5.Lcd.setCursor(16, 200);
+    M5.Lcd.print("Dumbbell");
+  }
+  if (runningFunctionName == "funnyMove"){
+    M5.Lcd.fillScreen(BLACK);
+    M5.Lcd.setTextColor(baseColor);
+    M5.Lcd.setTextSize(2);
+    M5.Lcd.setCursor(16, 200);
+    M5.Lcd.print("Dumbbell");
+    M5.Lcd.setCursor(230, 200);
+    M5.Lcd.print("Strike");
+    M5.Lcd.setCursor(230, 10);
+    M5.Lcd.print("Dislike");
+    M5.Lcd.setTextColor(runningColor);
+    M5.Lcd.setCursor(130, 200);
+    M5.Lcd.print("Funny");
+  }
+  if (runningFunctionName == "strikePose"){
+    M5.Lcd.fillScreen(BLACK);
+    M5.Lcd.setTextColor(baseColor);
+    M5.Lcd.setTextSize(2);
+    M5.Lcd.setCursor(16, 200);
+    M5.Lcd.print("Dumbbell");
+    M5.Lcd.setCursor(130, 200);
+    M5.Lcd.print("Funny");
+    M5.Lcd.setCursor(230, 10);
+    M5.Lcd.print("Dislike");
+    M5.Lcd.setTextColor(runningColor);
+    M5.Lcd.setCursor(230, 200);
+    M5.Lcd.print("Strike");
+  }
+  if (runningFunctionName == "expressDislike"){
+    M5.Lcd.fillScreen(BLACK);
+    M5.Lcd.setTextColor(baseColor);
+    M5.Lcd.setTextSize(2);
+    M5.Lcd.setCursor(16, 200);
+    M5.Lcd.print("Dumbbell");
+    M5.Lcd.setCursor(130, 200);
+    M5.Lcd.print("Funny");
+    M5.Lcd.setCursor(230, 200);
+    M5.Lcd.print("Strike");
+    M5.Lcd.setTextColor(runningColor);
+    M5.Lcd.setCursor(230, 10);
+    M5.Lcd.print("Dislike");
+  }
+  M5.Lcd.setTextColor(0xfed6);
+}
