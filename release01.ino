@@ -132,3 +132,32 @@ void resetRunningTextColor(){
   M5.Lcd.setCursor(230, 10);
   M5.Lcd.print("Dislike");
 }
+
+//　初期位置に戻す関数
+void resetPosition(int delayTime){
+  servo_move(servoElbowRight_PIN, initialPositionElbowRight);
+  servo_move(servoLateralShoulderRight_PIN, initialPositionLateralShoulderRight);
+  servo_move(servoLongitudinalShoulderRight_PIN, initialPositionLongitudinalShoulderRight);
+  servo_move(servoElbowLeft_PIN, initialPositionElbowLeft);
+  servo_move(servoLateralShoulderLeft_PIN, initialPositionLateralShoulderLeft);
+  servo_move(servoLongitudinalShoulderLeft_PIN, initialPositionLongitudinalShoulderLeft);
+  servo_move(servoNeck_PIN, initialPositionNeck);
+  delay(delayTime);
+}
+
+//　サーボの位置を表す変数の初期化
+void initializeAngle(){
+  positionElbowRight = initialPositionElbowRight;
+  positionLateralShoulderRight = initialPositionLateralShoulderRight;
+  positionLongitudinalShoulderRight = initialPositionLongitudinalShoulderRight;
+  positionElbowLeft = initialPositionElbowLeft;
+  positionLateralShoulderLeft = initialPositionLateralShoulderLeft;
+  positionLongitudinalShoulderLeft = initialPositionLongitudinalShoulderLeft;
+  positionNeck = initialPositionNeck;
+}
+
+//　サーボを動かす
+void servo_move(int n, int angle){
+  angle = map(angle, 0, 180, SERVOMIN, SERVOMAX);
+  pwm.setPWM(n, 0, angle);
+}
