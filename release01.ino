@@ -161,3 +161,17 @@ void servo_move(int n, int angle){
   angle = map(angle, 0, 180, SERVOMIN, SERVOMAX);
   pwm.setPWM(n, 0, angle);
 }
+
+//　音声ファイルを流す
+void playMP3(char *filename){
+  file = new AudioFileSourceSD(filename);
+  id3 = new AudioFileSourceID3(file);
+  out = new AudioOutputI2S(0, 1); // Output to builtInDAC
+  out->SetOutputModeMono(true);
+  out->SetGain(0.5);
+  mp3 = new AudioGeneratorMP3();
+  mp3->begin(id3, out);
+  while(mp3->isRunning()) {
+    if (!mp3->loop()) mp3->stop();
+  }
+}
